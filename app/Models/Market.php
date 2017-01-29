@@ -3,20 +3,24 @@
 namespace CodeIMarket\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Prettus\Repository\Contracts\Transformable;
+use Prettus\Repository\Traits\TransformableTrait;
 
-class Market extends Model
+class Market extends Model implements Transformable
 {
-  protected $fillable = [
-    'user_id',
-    'phone',
-    'address',
-    'city',
-    'state',
-    'postcode',
-  ];
+    use TransformableTrait;
 
-  public function user()
-  {
-    return $this->hasOne(User::class);
-  }
+    protected $fillable = [
+      'user_id',
+      'phone',
+      'address',
+      'city',
+      'state',
+      'postcode',
+    ];
+
+    public function user()
+    {
+      return $this->hasOne(User::class);
+    }
 }

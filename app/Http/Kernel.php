@@ -29,5 +29,6 @@ class Kernel extends HttpKernel
         'auth' => \CodeIMarket\Http\Middleware\Authenticate::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'guest' => \CodeIMarket\Http\Middleware\RedirectIfAuthenticated::class,
+        'auth.checkrole' => \CodeIMarket\Http\Middleware\CheckRole::class,
     ];
 }

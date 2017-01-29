@@ -3,23 +3,27 @@
 namespace CodeIMarket\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Prettus\Repository\Contracts\Transformable;
+use Prettus\Repository\Traits\TransformableTrait;
 
-class OfferItem extends Model
+class OfferItem extends Model implements Transformable
 {
-  protected $fillable = [
-    'offer_id',
-    'product_id',
-    'price',
-    'likes',
-  ];
+    use TransformableTrait;
 
-  public function offer()
-  {
-    return $this->belongsTo(Offer::class);
-  }
+    protected $fillable = [
+      'offer_id',
+      'product_id',
+      'price',
+      'likes',
+    ];
 
-  public function product()
-  {
-    return $this->belongsTo(Product::class);
-  }
+    public function offer()
+    {
+      return $this->belongsTo(Offer::class);
+    }
+
+    public function product()
+    {
+      return $this->belongsTo(Product::class);
+    }
 }
