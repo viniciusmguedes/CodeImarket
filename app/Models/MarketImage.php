@@ -3,16 +3,20 @@
 namespace CodeIMarket\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Prettus\Repository\Contracts\Transformable;
+use Prettus\Repository\Traits\TransformableTrait;
 
-class MarketImage extends Model
+class MarketImage extends Model implements Transformable
 {
-  protected $fillable = [
-    'extension',
-    'market_id',
-  ];
+    use TransformableTrait;
 
-  public function market()
-  {
-    return $this->belongsTo(Market::class);
-  }
+    protected $fillable = [
+      'extension',
+      'market_id',
+    ];
+
+    public function market()
+    {
+      return $this->belongsTo(Market::class);
+    }
 }
